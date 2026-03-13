@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* No orphans */
+h1, h2, h3, h4, h5, h6, p, li, td, th, caption, blockquote, label, span, a, strong, em {
+  text-wrap: pretty;
+}
+
+:root {
+  --olive: #b8b455;
+  --olive-light: #d4d080;
+  --olive-dark: #8a8740;
+  --dark: #1c1c1c;
+  --darker: #0d0d0d;
+  --gray: #2a2a2a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: #000000;
+  color: #ffffff;
+}
+
+body {
+  font-family: var(--font-open-sans), sans-serif;
+  background: #000000;
+  min-height: 100dvh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Industrial background texture */
+.bg-texture {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Olive glow effect */
+.glow-olive {
+  box-shadow: 0 0 20px rgba(184, 180, 85, 0.3), 0 0 40px rgba(184, 180, 85, 0.1);
+}
+
+.glow-olive-text {
+  text-shadow: 0 0 20px rgba(184, 180, 85, 0.5), 0 0 40px rgba(184, 180, 85, 0.2);
+}
+
+/* Slot machine shimmer */
+@keyframes shimmer {
+  0% { opacity: 0.4; }
+  50% { opacity: 1; }
+  100% { opacity: 0.4; }
+}
+
+.animate-shimmer {
+  animation: shimmer 0.15s ease-in-out infinite;
+}
+
+/* Pulse glow for CTA */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 10px rgba(184, 180, 85, 0.3); }
+  50% { box-shadow: 0 0 25px rgba(184, 180, 85, 0.6), 0 0 50px rgba(184, 180, 85, 0.2); }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Reveal flash */
+@keyframes reveal-flash {
+  0% { background-color: rgba(184, 180, 85, 0.5); transform: scale(1.05); }
+  100% { background-color: transparent; transform: scale(1); }
+}
+
+.animate-reveal {
+  animation: reveal-flash 0.5s ease-out;
+}
+
+/* Counting animation for numbers */
+@keyframes count-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-count-up {
+  animation: count-up 0.6s ease-out;
+}
+
+/* Diagonal accent stripe */
+.stripe-accent {
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 4px,
+    rgba(184, 180, 85, 0.06) 4px,
+    rgba(184, 180, 85, 0.06) 8px
+  );
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0d0d0d;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2a2a2a;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3a3a;
+}
