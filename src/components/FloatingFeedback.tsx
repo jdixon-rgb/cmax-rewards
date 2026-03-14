@@ -12,7 +12,7 @@ export default function FloatingFeedback() {
   return (
     <Link
       href="/feedback"
-      className="fixed bottom-20 right-4 z-40 w-12 h-12 bg-cmax-olive flex items-center justify-center hover:bg-cmax-olive-light active:scale-95 transition-all md:hidden"
+      className="fixed bottom-20 right-4 z-40 w-12 h-12 bg-cmax-olive flex items-center justify-center hover:bg-cmax-olive-light active:scale-95 transition-all"
       aria-label="Send feedback"
     >
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
