@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Montserrat, Open_Sans } from 'next/font/google';
 import { AppProvider } from '@/context/AppContext';
 import BottomNav from '@/components/BottomNav';
+import FloatingFeedback from '@/components/FloatingFeedback';
 import './globals.css';
 
 const montserrat = Montserrat({
@@ -37,6 +38,7 @@ export default function RootLayout({
       <body className="bg-black text-white font-body">
         <AppProvider>
           <main className="min-h-dvh pb-20 bg-texture">{children}</main>
+          <FloatingFeedback />
           <BottomNav />
         </AppProvider>
       </body>

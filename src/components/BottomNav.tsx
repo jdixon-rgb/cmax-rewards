@@ -25,15 +25,6 @@ const NAV_ITEMS = [
     ),
   },
   {
-    href: '/raffle',
-    label: 'DRAW',
-    icon: (active: boolean) => (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={active ? '#b8b455' : '#777'} strokeWidth="2.5">
-        <polygon points="12,2 15,9 22,9 16.5,14 18.5,21 12,17 5.5,21 7.5,14 2,9 9,9" />
-      </svg>
-    ),
-  },
-  {
     href: '/admin',
     label: 'ADMIN',
     icon: (active: boolean) => (
@@ -57,7 +48,7 @@ export default function BottomNav() {
             <Link
               key={item.href}
               href={item.href}
-              className={`flex flex-col items-center gap-1 px-4 py-2 transition-colors ${
+              className={`flex flex-col items-center gap-1 px-6 py-2 transition-colors ${
                 isActive ? 'text-cmax-olive' : 'text-cmax-muted'
               }`}
             >

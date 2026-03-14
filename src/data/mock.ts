@@ -62,7 +62,7 @@ export const members: Member[] = [
   { id: 9, name: 'Tyler Brooks', points: 5920, joinDate: '2024-09-22' },
   { id: 10, name: 'Aisha Johnson', points: 5440, joinDate: '2024-10-18' },
   { id: 11, name: 'Ryan O\'Brien', points: 4780, joinDate: '2024-12-01' },
-  { id: 12, name: 'Jasmine Wu', points: 3540, joinDate: '2025-01-10' },
+  { id: 12, name: 'Sean Garner', points: 3540, joinDate: '2025-01-10' },
   { id: 13, name: 'Chris Martinez', points: 3210, joinDate: '2025-01-25' },
   { id: 14, name: 'Priya Sharma', points: 2890, joinDate: '2025-02-05' },
   { id: 15, name: 'Nate Collins', points: 2650, joinDate: '2025-02-14' },
