@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Montserrat, Open_Sans } from 'next/font/google';
 import { AppProvider } from '@/context/AppContext';
+import AppShell from '@/components/AppShell';
 import BottomNav from '@/components/BottomNav';
 import FloatingFeedback from '@/components/FloatingFeedback';
 import './globals.css';
@@ -37,9 +38,11 @@ export default function RootLayout({
     <html lang="en" className={`${montserrat.variable} ${openSans.variable}`}>
       <body className="bg-black text-white font-body">
         <AppProvider>
-          <main className="min-h-dvh pb-20 bg-texture">{children}</main>
-          <FloatingFeedback />
-          <BottomNav />
+          <AppShell>
+            <main className="min-h-dvh pb-20 bg-texture">{children}</main>
+            <FloatingFeedback />
+            <BottomNav />
+          </AppShell>
         </AppProvider>
       </body>
     </html>
