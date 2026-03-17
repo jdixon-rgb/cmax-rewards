@@ -38,7 +38,7 @@ export default function DevicePreview() {
 
       {/* Version */}
       <div className="fixed bottom-4 right-6 z-50 text-[10px] text-[#555] font-mono">
-        v1.3.0
+        v1.3.1
       </div>
 
       {/* Mobile View */}

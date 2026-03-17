@@ -1,12 +1,17 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, Suspense } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 
 type FeedbackType = 'suggestion' | 'bug';
 
-export default function FeedbackPage() {
+function FeedbackPageInner() {
+  const searchParams = useSearchParams();
+  const isEmbedded = searchParams.get('embedded') === 'true';
+  const homeHref = isEmbedded ? '/?embedded=true' : '/';
+
   const [type, setType] = useState<FeedbackType>('suggestion');
   const [message, setMessage] = useState('');
   const [submitted, setSubmitted] = useState(false);
@@ -37,7 +42,7 @@ export default function FeedbackPage() {
             Your {type === 'suggestion' ? 'suggestion' : 'bug report'} has been received.
           </p>
           <Link
-            href="/"
+            href={homeHref}
             className="inline-block px-6 py-3 border border-cmax-gray text-sm font-heading font-bold tracking-wider text-cmax-muted hover:border-cmax-olive hover:text-cmax-olive transition-colors uppercase"
           >
             Back to Home
@@ -56,7 +61,7 @@ export default function FeedbackPage() {
         className="mb-6"
       >
         <Link
-          href="/"
+          href={homeHref}
           className="inline-flex items-center gap-2 text-cmax-muted hover:text-cmax-olive transition-colors mb-4"
         >
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -198,5 +203,13 @@ export default function FeedbackPage() {
         </button>
       </motion.div>
     </div>
+  );
+}
+
+export default function FeedbackPage() {
+  return (
+    <Suspense fallback={null}>
+      <FeedbackPageInner />
+    </Suspense>
   );
 }

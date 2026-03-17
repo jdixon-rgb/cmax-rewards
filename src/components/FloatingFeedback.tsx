@@ -1,17 +1,22 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
+import { Suspense } from 'react';
 
-export default function FloatingFeedback() {
+function FloatingFeedbackInner() {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const isEmbedded = searchParams.get('embedded') === 'true';
 
   // Hide on the feedback page itself
   if (pathname === '/feedback') return null;
 
+  const href = isEmbedded ? '/feedback?embedded=true' : '/feedback';
+
   return (
     <Link
-      href="/feedback"
+      href={href}
       className="fixed bottom-20 right-4 z-40 w-12 h-12 bg-cmax-olive flex items-center justify-center hover:bg-cmax-olive-light active:scale-95 transition-all lg:hidden"
       aria-label="Send feedback"
     >
@@ -19,5 +24,13 @@ export default function FloatingFeedback() {
         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
       </svg>
     </Link>
+  );
+}
+
+export default function FloatingFeedback() {
+  return (
+    <Suspense fallback={null}>
+      <FloatingFeedbackInner />
+    </Suspense>
   );
 }

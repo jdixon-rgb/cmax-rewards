@@ -1,7 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
+import { Suspense } from 'react';
 
 const NAV_ITEMS = [
   {
@@ -45,8 +46,14 @@ const NAV_ITEMS = [
   },
 ];
 
-export default function BottomNav() {
+function BottomNavInner() {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const isEmbedded = searchParams.get('embedded') === 'true';
+
+  // Preserve ?embedded=true on all links when inside the iframe
+  const getHref = (href: string) =>
+    isEmbedded ? `${href}${href.includes('?') ? '&' : '?'}embedded=true` : href;
 
   return (
     <>
@@ -58,7 +65,7 @@ export default function BottomNav() {
             return (
               <Link
                 key={item.href}
-                href={item.href}
+                href={getHref(item.href)}
                 className={`flex flex-col items-center gap-1 px-6 py-2 transition-colors ${
                   isActive ? 'text-cmax-olive' : 'text-cmax-muted'
                 }`}
@@ -92,7 +99,7 @@ export default function BottomNav() {
             return (
               <Link
                 key={item.href}
-                href={item.href}
+                href={getHref(item.href)}
                 className={`flex items-center gap-3 px-6 py-3.5 transition-colors ${
                   isActive
                     ? 'text-cmax-olive bg-cmax-olive-muted border-l-2 border-l-cmax-olive'
@@ -116,5 +123,13 @@ export default function BottomNav() {
         </div>
       </nav>
     </>
+  );
+}
+
+export default function BottomNav() {
+  return (
+    <Suspense fallback={null}>
+      <BottomNavInner />
+    </Suspense>
   );
 }
