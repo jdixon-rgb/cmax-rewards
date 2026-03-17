@@ -39,7 +39,7 @@ export default function RootLayout({
       <body className="bg-black text-white font-body">
         <AppProvider>
           <AppShell>
-            <main className="min-h-dvh pb-20 bg-texture">{children}</main>
+            <main className="min-h-dvh pb-20 lg:pb-0 lg:ml-64 bg-texture">{children}</main>
             <FloatingFeedback />
             <BottomNav />
           </AppShell>

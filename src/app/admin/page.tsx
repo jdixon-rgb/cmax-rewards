@@ -191,7 +191,7 @@ export default function AdminPage() {
   /* ═══════════════════════════════════════════════ */
 
   return (
-    <div className="max-w-lg mx-auto px-4 pt-6">
+    <div className="max-w-lg lg:max-w-5xl mx-auto px-4 lg:px-8 pt-6 lg:pt-10">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: -10 }}
@@ -230,7 +230,7 @@ export default function AdminPage() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="grid grid-cols-3 gap-2 mb-6"
+            className="grid grid-cols-3 gap-2 lg:gap-3 mb-6"
           >
             <div className="border border-cmax-gray bg-cmax-darker p-3 text-center">
               <div className="font-heading font-bold text-[10px] tracking-wider text-cmax-muted uppercase">
@@ -258,6 +258,8 @@ export default function AdminPage() {
             </div>
           </motion.div>
 
+          {/* Desktop: two-column layout for member + actions */}
+          <div className="lg:grid lg:grid-cols-2 lg:gap-8">
           {/* Member Selector */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -304,6 +306,7 @@ export default function AdminPage() {
           </motion.div>
 
           {/* Selected Member + Quick Actions */}
+          <div>
           {selectedMember && (
             <motion.div
               initial={{ opacity: 0, y: 10 }}
@@ -332,7 +335,7 @@ export default function AdminPage() {
               <div className="font-heading font-bold text-xs tracking-[0.15em] text-cmax-muted uppercase mb-2">
                 Quick Award
               </div>
-              <div className="grid grid-cols-3 gap-2">
+              <div className="grid grid-cols-3 lg:grid-cols-4 gap-2">
                 {QUICK_ACTIONS.map((action) => (
                   <button
                     key={action.type}
@@ -350,6 +353,17 @@ export default function AdminPage() {
               </div>
             </motion.div>
           )}
+
+          {/* No member selected placeholder for desktop right column */}
+          {!selectedMember && (
+            <div className="hidden lg:flex items-center justify-center border border-dashed border-cmax-gray bg-cmax-darker p-8 text-center">
+              <div className="text-sm text-cmax-muted">
+                Select a member to award points
+              </div>
+            </div>
+          )}
+          </div>
+          </div>
 
           {/* Recent Activity */}
           <motion.div
@@ -391,6 +405,7 @@ export default function AdminPage() {
       {/* ─── DRAW TAB ─── */}
       {tab === 'draw' && (
         <>
+          <div className="lg:max-w-2xl lg:mx-auto">
           <p className="text-sm text-cmax-muted mb-6">
             Three tiers. Three winners. One epic moment.
           </p>
@@ -536,6 +551,7 @@ export default function AdminPage() {
                 </div>
               </div>
             )}
+          </div>
           </div>
         </>
       )}

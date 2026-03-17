@@ -18,7 +18,7 @@ export default function FeedbackPage() {
 
   if (submitted) {
     return (
-      <div className="max-w-lg mx-auto px-4 pt-6 flex flex-col items-center justify-center min-h-[70dvh]">
+      <div className="max-w-lg mx-auto px-4 lg:px-8 pt-6 lg:pt-10 flex flex-col items-center justify-center min-h-[70dvh]">
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
@@ -48,7 +48,7 @@ export default function FeedbackPage() {
   }
 
   return (
-    <div className="max-w-lg mx-auto px-4 pt-6">
+    <div className="max-w-lg mx-auto px-4 lg:px-8 pt-6 lg:pt-10">
       {/* Back + Header */}
       <motion.div
         initial={{ opacity: 0, y: -10 }}
